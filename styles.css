@@ -29,6 +29,12 @@ h1 {
 
 .question {
     margin-bottom: 20px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.question:last-child {
+    border-bottom: none;
 }
 
 label {
