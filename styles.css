@@ -16,45 +16,37 @@ body {
     max-width: 600px;
     margin: 50px auto;
     background: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     padding: 20px;
 }
 
 h1 {
-    font-size: 24px;
+    font-size: 28px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 .question {
-    margin-bottom: 20px;
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.question:last-child {
-    border-bottom: none;
+    margin-bottom: 25px;
 }
 
 label {
     display: block;
-    margin: 5px 0;
+    margin: 8px 0;
 }
 
 input[type="radio"] {
-    margin-right: 10px;
+    margin-right: 12px;
 }
 
 button {
-    padding: 12px 24px;
-    font-size: 16px;
+    padding: 15px 30px;
+    font-size: 18px;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {
@@ -62,7 +54,7 @@ button:hover {
 }
 
 .sub-options {
-    margin-left: 20px;
+    margin-left: 30px;
 }
 
 .hidden {
