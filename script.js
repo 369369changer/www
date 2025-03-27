@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
     const submitButton = document.getElementById('submitAssessment');
-    const backButton = document.getElementById('backToHome');
     const scoreDisplay = document.getElementById('score');
     const resultTextDisplay = document.getElementById('resultText');
 
@@ -9,8 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
         input.addEventListener('change', function () {
             const q5a = document.getElementById('q5a');
             const q5b = document.getElementById('q5b');
-            q5a.style.display = this.value === 'A'? 'block' : 'none';
-            q5b.style.display = this.value === 'B'? 'block' : 'none';
+            q5a.style.display = this.value === 'A' ? 'block' : 'none';
+            q5b.style.display = this.value === 'B' ? 'block' : 'none';
         });
     });
 
@@ -18,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('input[name="q9"]').forEach(input => {
         input.addEventListener('change', function () {
             const q9a = document.getElementById('q9a');
-            q9a.style.display = this.value === 'A'? 'block' : 'none';
+            q9a.style.display = this.value === 'A' ? 'block' : 'none';
         });
     });
 
@@ -38,12 +37,12 @@ document.addEventListener('DOMContentLoaded', function () {
             if (scores.hasOwnProperty(key)) {
                 if (key.startsWith('q5')) {
                     if (key === 'q5a') {
-                        scores[key] = value === 'A1'? 1 : value === 'A2'? 2 : 0;
+                        scores[key] = value === 'A1' ? 1 : value === 'A2' ? 2 : 0;
                     } else if (key === 'q5b') {
-                        scores[key] = value === 'B1'? 1 : value === 'B2'? 2 : 0;
+                        scores[key] = value === 'B1' ? 1 : value === 'B2' ? 2 : 0;
                     }
                 } else {
-                    scores[key] = value === 'A'? 1 : value === 'B'? 2 : value === 'C'? 0 : 0;
+                    scores[key] = value === 'A' ? 1 : value === 'B' ? 2 : value === 'C' ? 0 : 0;
                 }
             }
         });
@@ -63,16 +62,11 @@ document.addEventListener('DOMContentLoaded', function () {
             resultText = 'DS Ⅳ期 ISS Ⅳ期 R-ISS Ⅳ期 R2-ISS Ⅳ期';
         }
 
-        // 显示结果
+        // 显示结果（仅在当前页面显示）
         scoreDisplay.textContent = `评分: ${totalScore}`;
         resultTextDisplay.textContent = resultText;
 
-        // 跳转到结果页面（如果需要）
+        // 如果需要跳转到结果页面，可以使用以下代码
         // window.location.href = `result.html?score=${totalScore}&result=${encodeURIComponent(resultText)}`;
-    });
-
-    // 返回首页按钮事件
-    backButton.addEventListener('click', function () {
-        window.location.href = 'index.html';
     });
 });
