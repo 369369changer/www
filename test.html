@@ -1,116 +1,64 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>评估测试</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>评估测试</h1>
-        <form id="assessmentForm">
-            <!-- 问题1 -->
-            <div class="question">
-                <p>1. 血常规</p>
-                <label><input type="radio" name="q1" value="A"> a. 血红蛋白水平 > 100 g/L</label>
-                <label><input type="radio" name="q1" value="B"> b. 血红蛋白水平 < 85 g/L</label>
-                <label><input type="radio" name="q1" value="C"> c. 以上均不符合</label>
-                <label><input type="radio" name="q1" value="D"> d. 未做该检查</label>
-            </div>
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-            <!-- 问题2 -->
-            <div class="question">
-                <p>2. 生化报告</p>
-                <label><input type="radio" name="q2" value="A"> a. 血清钙(Ca) ≤ 2.65 mmol/L (11.5mg/dL)</label>
-                <label><input type="radio" name="q2" value="B"> b. 血清钙(Ca) > 2.65 mmol/L (11.5mg/dL)</label>
-                <label><input type="radio" name="q2" value="C"> c. 未做该检查</label>
-            </div>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+}
 
-            <!-- 问题3 -->
-            <div class="question">
-                <p>3. 生化报告肾功</p>
-                <label><input type="radio" name="q3" value="A"> a. 肌酐清除率 > 40 mL/min 或血清肌酐水平 < 177umo/L (2.0 mg/dL)</label>
-                <label><input type="radio" name="q3" value="B"> b. 肌酐清除率 < 40 mL/min 或血清肌酐水平 > 177umol/L (2.0 mg/dL)</label>
-                <label><input type="radio" name="q3" value="C"> c. 未做该检查</label>
-            </div>
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 50px auto;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
 
-            <!-- 问题4 -->
-            <div class="question">
-                <p>4. X线、PET、MRI</p>
-                <label><input type="radio" name="q4" value="A"> a. 骨骼X线: 骨骼结构正常或骨型孤立性浆细胞瘤</label>
-                <label><input type="radio" name="q4" value="B"> b. 骨骼检查中溶骨病变 > 3处</label>
-                <label><input type="radio" name="q4" value="C"> c. 以上均不符合</label>
-                <label><input type="radio" name="q4" value="D"> d. 未做该检查</label>
-            </div>
+h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-            <!-- 问题5 -->
-            <div class="question">
-                <p>5. 特殊蛋白检验报告</p>
-                <label><input type="radio" name="q5" value="A"> A. 免疫球蛋白G(IgG)</label>
-                <div class="sub-question" id="q5-sub-A">
-                    <label><input type="radio" name="q5-A" value="A1"> a. IgG < 50g/L</label>
-                    <label><input type="radio" name="q5-A" value="A2"> b. IgG > 70g/L</label>
-                    <label><input type="radio" name="q5-A" value="A3"> c. 以上均不符合</label>
-                    <label><input type="radio" name="q5-A" value="A4"> d. 未做该检查</label>
-                </div>
-                <label><input type="radio" name="q5" value="B"> B. 免疫球蛋白A(IgA)</label>
-                <div class="sub-question" id="q5-sub-B">
-                    <label><input type="radio" name="q5-B" value="B1"> a. IgA < 30g/L</label>
-                    <label><input type="radio" name="q5-B" value="B2"> b. IgA > 50g/L</label>
-                    <label><input type="radio" name="q5-B" value="B3"> c. 以上均不符合</label>
-                    <label><input type="radio" name="q5-B" value="B4"> d. 未做该检查</label>
-                </div>
-            </div>
+.question {
+    margin-bottom: 20px;
+}
 
-            <!-- 问题6 -->
-            <div class="question">
-                <p>6. 尿常规</p>
-                <label><input type="radio" name="q6" value="A"> a. 尿本周蛋白Bence Jones < 4g/24h</label>
-                <label><input type="radio" name="q6" value="B"> b. 尿本周蛋白Bence Jones > 12g/24h</label>
-                <label><input type="radio" name="q6" value="C"> c. 以上均不符合</label>
-                <label><input type="radio" name="q6" value="D"> d. 未做该检查</label>
-            </div>
+label {
+    display: block;
+    margin: 5px 0;
+}
 
-            <!-- 问题7 -->
-            <div class="question">
-                <p>7. B2微球蛋白、生化报告</p>
-                <label><input type="radio" name="q7" value="A"> a. β2-MG < 3.5mg/L 白蛋白 > 35g/L</label>
-                <label><input type="radio" name="q7" value="B"> b. B2-MG > 5.5mg/L</label>
-                <label><input type="radio" name="q7" value="C"> c. 以上条件都不满足</label>
-                <label><input type="radio" name="q7" value="D"> d. 未做该检查</label>
-            </div>
+input[type="radio"] {
+    margin-right: 10px;
+}
 
-            <!-- 问题8 -->
-            <div class="question">
-                <p>8. 生化报告</p>
-                <label><input type="radio" name="q8" value="A"> a. 乳酸脱氢酶(LDH)箭头朝下</label>
-                <label><input type="radio" name="q8" value="B"> b. 乳酸脱氢酶(LDH)箭头朝上</label>
-                <label><input type="radio" name="q8" value="C"> c. 未做该检查</label>
-            </div>
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
 
-            <!-- 问题9 -->
-            <div class="question">
-                <p>9. 荧光原位杂交(FISH)</p>
-                <label><input type="radio" name="q9" value="A"> A. 已做该检查</label>
-                <div class="sub-question" id="q9-sub-A">
-                    <label><input type="radio" name="q9-A" value="A1"> a. del (17p)</label>
-                    <label><input type="radio" name="q9-A" value="A2"> b. t(4,14)</label>
-                    <label><input type="radio" name="q9-A" value="A3"> c. 1q+</label>
-                    <label><input type="radio" name="q9-A" value="A4"> d. t(14,16)</label>
-                    <label><input type="radio" name="q9-A" value="A5"> e. 以上条件都不满足</label>
-                </div>
-                <label><input type="radio" name="q9" value="B"> B. 未做该检查</label>
-            </div>
-        </form>
-        <button id="submitAssessment" class="submit-button">提交评估</button>
-    </div>
+button:hover {
+    background-color: #0056b3;
+}
 
-    <div id="result" class="result-container">
-        <h2>评估结果</h2>
-        <p id="result-text"></p>
-    </div>
+.sub-options {
+    margin-left: 20px;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+.hidden {
+    display: none;
+}
