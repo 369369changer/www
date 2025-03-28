@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>遗传学异常</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>是否伴有以下遗传学异常</h1>
+        <form id="geneticAbnormalitiesForm">
+            <fieldset>
+                <legend>伴MDS相关的核型异常或基因突变</legend>
+                <label><input type="radio" name="geneticAbnormality" value="a"> A.伴MDS相关的核型异常</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="b"> B.伴MDS相关的基因突变</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="c"> C.无</label><br>
+            </fieldset>
+            <fieldset>
+                <legend>BCR::ABL1相关</legend>
+                <label><input type="radio" name="geneticAbnormality" value="d"> D.BCR::ABL1（伴MDS相关核型异常）</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="e"> E.BCR::ABL1（不伴MDS相关核型异常）</label><br>
+            </fieldset>
+            <fieldset>
+                <legend>其他重排或突变</legend>
+                <label><input type="radio" name="geneticAbnormality" value="f"> F.KMT2A基因重排</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="g"> G.MECOM 基因重排</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="h"> H.NUP98基因重排</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="i"> I.NPM1突变</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="j"> J.CEBPA突变</label><br>
+            </fieldset>
+            <fieldset>
+                <legend>其他情况</legend>
+                <label><input type="radio" name="geneticAbnormality" value="k"> K.伴以下遗传学异常（ASXL1, NRAS, PTPN11, SETBP1, SRSF2, TP53, U2AF1）</label><br>
+                <label><input type="radio" name="geneticAbnormality" value="l"> L.无</label><br>
+            </fieldset>
+            <button type="button" onclick="nextQuestion(this)">下一步</button>
+        </form>
+    </div>
+
+    <script>
+        function nextQuestion(button) {
+            const geneticAbnormality = document.querySelector('input[name="geneticAbnormality"]:checked');
+            if (!geneticAbnormality) {
+                // 对于“L.无”的情况不再弹窗提示，按业务逻辑处理
+                if (document.querySelector('input[name="geneticAbnormality"][value="l"]:checked')) {
+                    handleNoGeneticAbnormality();
+                    return;
+                } else {
+                    alert('请选择一个选项');
+                    return;
+                }
+            }
+
+            const whiteBloodCell = sessionStorage.getItem('whiteBloodCell');
+            const boneMarrowDysplasia = sessionStorage.getItem('boneMarrowDysplasia');
+            const mdsRelated = boneMarrowDysplasia === 'a' || boneMarrowDysplasia === 'b';
+
+            let result = '无白血病';
+
+            if (geneticAbnormality.value === 'a' || geneticAbnormality.value === 'b') {
+                result = 'APL伴PML::RARA融合基因';
+            } else if (geneticAbnormality.value === 'd') {
+                result = 'AML伴BCR::ABL1融合基因（伴MDS相关核型异常）';
+            } else if (geneticAbnormality.value === 'e') {
+                result = whiteBloodCell === 'greaterThan100' ? 'AML伴BCR::ABL1融合基因（不伴MDS相关核型异常）' : 'MDS';
+            } else if (geneticAbnormality.value === 'f') {
+                result = 'AML伴KMT2A重排';
+            } else if (geneticAbnormality.value === 'g') {
+                result = 'AML伴MECOM重排';
+            } else if (geneticAbnormality.value === 'h') {
+                result = 'AML伴NUP98重排';
+            } else if (geneticAbnormality.value === 'i') {
+                result = 'AML伴NPM1突变';
+            } else if (geneticAbnormality.value === 'j') {
+                result = whiteBloodCell === 'greaterThan100' ? 'AML伴CEBPA突变' : 'MDS';
+            } else if (geneticAbnormality.value === 'k') {
+                result = mdsRelated ? 'AML伴其他特定的遗传学改变' : '建议进一步诊断';
+            }
+
+            // “L.无”的情况在前面已经处理，这里不再重复
+            sessionStorage.setItem('diagnosisResult', result);
+            window.location.href = 'diagnosisResult.html';
+        }
+
+        function handleNoGeneticAbnormality() {
+            const whiteBloodCell = sessionStorage.getItem('whiteBloodCell');
+            const boneMarrowDysplasia = sessionStorage.getItem('boneMarrowDysplasia');
+            const mdsRelated = boneMarrowDysplasia === 'a' || boneMarrowDysplasia === 'b';
+
+            let nextPage;
+
+            if (mdsRelated) {
+                // 如果有MDS相关情况且遗传学无异常，按业务逻辑可能是建议进一步诊断或其他
+                result = '建议进一步诊断';
+                nextPage = 'diagnosisResult.html';
+            } else {
+                // 如果没有MDS相关情况且遗传学无异常，可能是正常情况
+                result = '无白血病';
+                nextPage = 'diagnosisResult.html';
+            }
+
+            sessionStorage.setItem('diagnosisResult', result);
+            window.location.href = nextPage;
+        }
+    </script>
+</body>
+</html>

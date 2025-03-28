@@ -2,27 +2,22 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MM数智小工具-1分期</title>
+    <title>白血病诊疗助手</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container home">
-        <div class="header">
-            <div class="logo-container">
-                <img src="https://via.placeholder.com/150x150?text=自治区人民医院Logo" alt="自治区人民医院 Logo" class="logo">
-            </div>
-            <h1>MM数智小工具-1分期</h1>
-        </div>
-        <div class="content">
-            <button id="startAssessment" class="start-button">开始评估</button>
+    <div class="container">
+        <h1>白血病诊疗助手</h1>
+        <div class="card">
+            <h2>开始诊断</h2>
+            <button onclick="startDiagnosis()">开始</button>
         </div>
     </div>
 
     <script>
-        document.getElementById('startAssessment').addEventListener('click', function() {
+        function startDiagnosis() {
             window.location.href = 'test.html';
-        });
+        }
     </script>
 </body>
 </html>

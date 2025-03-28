@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>白细胞计数</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>白细胞计数</h1>
+        <div class="card">
+            <form id="whiteBloodCellForm">
+                <label class="radio-label"><input type="radio" name="whiteBloodCell" value="lessThan10"> A.＜10×10^9/L</label>
+                <label class="radio-label"><input type="radio" name="whiteBloodCell" value="10To100"> B.10-100×10^9/L</label>
+                <label class="radio-label"><input type="radio" name="whiteBloodCell" value="greaterThan100"> C.≥100×10^9/L</label>
+                <button type="button" class="next-button" onclick="nextQuestion(this)">下一步</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function nextQuestion(button) {
+            const selected = document.querySelector('input[name="whiteBloodCell"]:checked');
+            if (selected) {
+                sessionStorage.setItem('whiteBloodCell', selected.value);
+                window.location.href = 'boneMarrowDysplasia.html';
+            } else {
+                alert('请选择一个选项');
+            }
+        }
+    </script>
+</body>
+</html>

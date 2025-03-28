@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>骨髓增生异常相关</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>是否有伴骨髓增生异常相关</h1>
+        <form id="boneMarrowDysplasiaForm">
+            <label><input type="radio" name="boneMarrowDysplasia" value="a"> A.伴MDS相关的核型异常</label><br>
+            <label><input type="radio" name="boneMarrowDysplasia" value="b"> B.伴MDS相关的基因突变</label><br>
+            <label><input type="radio" name="boneMarrowDysplasia" value="c"> C.无</label><br>
+            <button type="button" onclick="nextQuestion(this)">下一步</button>
+        </form>
+    </div>
+
+    <script>
+        function nextQuestion(button) {
+            const boneMarrowDysplasia = document.querySelector('input[name="boneMarrowDysplasia"]:checked');
+            if (!boneMarrowDysplasia) {
+                alert('请选择一个选项');
+                return;
+            }
+
+            const whiteBloodCell = sessionStorage.getItem('whiteBloodCell');
+
+            if (boneMarrowDysplasia.value === 'c') {
+                // 按业务逻辑处理“C.无”的情况
+                if (whiteBloodCell === 'lessThan10') {
+                    showResult('MDS');
+                } else if (whiteBloodCell === 'greaterThan100') {
+                    showResult('骨髓增生异常相关AML');
+                } else {
+                    // 如果whiteBloodCell未选择，跳转到geneticAbnormalities.html继续诊断
+                    window.location.href = 'geneticAbnormalities.html';
+                }
+            } else if ((boneMarrowDysplasia.value === 'a' || boneMarrowDysplasia.value === 'b') && whiteBloodCell === 'lessThan10') {
+                showResult('MDS');
+            } else if ((boneMarrowDysplasia.value === 'a' || boneMarrowDysplasia.value === 'b') && whiteBloodCell === 'greaterThan100') {
+                showResult('骨髓增生异常相关AML');
+            } else {
+                sessionStorage.setItem('boneMarrowDysplasia', boneMarrowDysplasia.value);
+                window.location.href = 'geneticAbnormalities.html';
+            }
+        }
+
+        function showResult(result) {
+            sessionStorage.setItem('diagnosisResult', result);
+            window.location.href = 'diagnosisResult.html';
+        }
+    </script>
+</body>
+</html>

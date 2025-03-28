@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>诊断结果</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>诊断结果</h1>
+        <div class="card">
+            <p id="result"></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('result').innerText = `您的诊断结果是：${sessionStorage.getItem('diagnosisResult') || '无白血病'}`;
+    </script>
+</body>
+</html>

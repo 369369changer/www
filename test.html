@@ -2,119 +2,41 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>评估测试</title>
+    <title>既往化疗病史</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container test">
-        <h1>评估测试</h1>
-        <form id="assessmentForm">
-            <!-- 问题1 -->
-            <div class="question">
-                <p>1. 血常规</p>
-                <label><input type="radio" name="q1" value="A"> a. 血红蛋白水平 > 100 g/L</label>
-                <label><input type="radio" name="q1" value="B"> b. 血红蛋白水平 < 85 g/L</label>
-                <label><input type="radio" name="q1" value="C"> c. 以上均不符合</label>
-                <label><input type="radio" name="q1" value="D"> d. 未做该检查</label>
-            </div>
-
-            <!-- 问题2 -->
-            <div class="question">
-                <p>2. 生化报告</p>
-                <label><input type="radio" name="q2" value="A"> a. 血清钙(Ca) ≤ 2.65 mmol/L (11.5mg/dL)</label>
-                <label><input type="radio" name="q2" value="B"> b. 血清钙(Ca) > 2.65 mmol/L (11.5mg/dL)</label>
-                <label><input type="radio" name="q2" value="C"> c. 未做该检查</label>
-            </div>
-
-            <!-- 问题3 -->
-            <div class="question">
-                <p>3. 生化报告肾功</p>
-                <label><input type="radio" name="q3" value="A"> a. 肌酐清除率 > 40 mL/min 或血清肌酐水平 < 177umo/L (2.0 mg/dL)</label>
-                <label><input type="radio" name="q3" value="B"> b. 肌酐清除率 < 40 mL/min 或血清肌酐水平 > 177umol/L (2.0 mg/dL)</label>
-                <label><input type="radio" name="q3" value="C"> c. 未做该检查</label>
-            </div>
-
-            <!-- 问题4 -->
-            <div class="question">
-                <p>4. X线/PET/MRI任一</p>
-                <label><input type="radio" name="q4" value="A"> a. 骨骼X线:骨骼结构正常或骨型孤立性浆细胞瘤</label>
-                <label><input type="radio" name="q4" value="B"> b. 骨骼检查中溶骨病变>3处</label>
-                <label><input type="radio" name="q4" value="C"> c. 以上均不符合</label>
-                <label><input type="radio" name="q4" value="D"> d. 未做该检查</label>
-            </div>
-
-            <!-- 问题5 -->
-            <div class="question">
-                <p>5. 特殊蛋白检验报告</p>
-                <div class="sub-question">
-                    <label><input type="radio" name="q5" value="A"> A. 免疫球蛋白g(IgG)</label>
-                    <div class="sub-options" id="q5a">
-                        <label><input type="radio" name="q5a" value="A1"> a. IgG<50g/L</label>
-                        <label><input type="radio" name="q5a" value="A2"> b. IgG>70g/L</label>
-                        <label><input type="radio" name="q5a" value="A3"> c. 以上均不符合</label>
-                        <label><input type="radio" name="q5a" value="A4"> d. 未做该检查</label>
-                    </div>
-                </div>
-                <div class="sub-question">
-                    <label><input type="radio" name="q5" value="B"> B. 免疫球蛋白g(IgA)</label>
-                    <div class="sub-options" id="q5b" style="display: none;">
-                        <label><input type="radio" name="q5b" value="B1"> a. IgA<30g/L</label>
-                        <label><input type="radio" name="q5b" value="B2"> b. IgA>50g/L</label>
-                        <label><input type="radio" name="q5b" value="B3"> c. 以上均不符合</label>
-                        <label><input type="radio" name="q5b" value="B4"> d. 未做该检查</label>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 问题6 -->
-            <div class="question">
-                <p>6. 尿常规</p>
-                <label><input type="radio" name="q6" value="A"> a. 尿本周蛋白Bence Jones<4g/24h</label>
-                <label><input type="radio" name="q6" value="B"> b. 尿本周蛋白Bence Jones>12g/24h</label>
-                <label><input type="radio" name="q6" value="C"> c. 以上均不符合</label>
-                <label><input type="radio" name="q6" value="D"> d. 未做该检查</label>
-            </div>
-
-            <!-- 问题7 -->
-            <div class="question">
-                <p>7. B2微球蛋白、生化报告</p>
-                <label><input type="radio" name="q7" value="A"> a. β2-MG<3.5mg/L 白蛋白>35g/L</label>
-                <label><input type="radio" name="q7" value="B"> b. B2-MG>5.5mg/L</label>
-                <label><input type="radio" name="q7" value="C"> c. 以上条件都不满足</label>
-                <label><input type="radio" name="q7" value="D"> d. 未做该检查</label>
-            </div>
-
-            <!-- 问题8 -->
-            <div class="question">
-                <p>8. 生化报告</p>
-                <label><input type="radio" name="q8" value="A"> a. 乳酸脱氢酶(LDH)箭头朝下</label>
-                <label><input type="radio" name="q8" value="B"> b. 乳酸脱氢酶(LDH)箭头朝上</label>
-                <label><input type="radio" name="q8" value="C"> c. 未做该检查</label>
-            </div>
-
-            <!-- 问题9 -->
-            <div class="question">
-                <p>9. 荧光原位杂交(FISH)</p>
-                <div class="sub-question">
-                    <label><input type="radio" name="q9" value="A"> A. 已做该检查</label>
-                    <div class="sub-options" id="q9a">
-                        <label><input type="radio" name="q9a" value="A1"> a. del (17p)</label>
-                        <label><input type="radio" name="q9a" value="A2"> b. t(4,14)</label>
-                        <label><input type="radio" name="q9a" value="A3"> c. 1q+</label>
-                        <label><input type="radio" name="q9a" value="A4"> d. t(14,16)</label>
-                        <label><input type="radio" name="q9a" value="A5"> e. 以上条件都不满足</label>
-                    </div>
-                </div>
-                <div class="sub-question">
-                    <label><input type="radio" name="q9" value="B"> B. 未做该检查</label>
-                </div>
-            </div>
-
-            <button id="submitAssessment" class="submit-button">提交</button>
+    <div class="container">
+        <h1>既往化疗病史</h1>
+        <form id="chemotherapyForm">
+            <label><input type="radio" name="chemotherapy" value="no"> A.无</label><br>
+            <label><input type="radio" name="chemotherapy" value="yes"> B.有</label><br>
+            <button type="button" onclick="nextQuestion(this)">下一步</button>
         </form>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        function nextQuestion(button) {
+            const chemotherapy = document.querySelector('input[name="chemotherapy"]:checked');
+            if (!chemotherapy) {
+                // 对于“无”选项的特殊处理，不再弹窗提示，按业务逻辑处理
+                if (document.querySelector('input[name="chemotherapy"][value="no"]:checked')) {
+                    // 根据业务逻辑这里假设直接进入下一题（这里假设下一题是whiteBloodCellCount.html）
+                    window.location.href = 'whiteBloodCellCount.html';
+                } else {
+                    alert('请选择一个选项');
+                    return;
+                }
+            }
+
+            if (chemotherapy.value === 'yes') {
+                window.location.href = 'whiteBloodCellCount.html';
+            } else {
+                // 这里添加对选择“无”时的其他业务逻辑处理（如果有）
+                // 目前按照前面要求，不弹窗且按业务逻辑进入下一题（假设是whiteBloodCellCount.html）
+                window.location.href = 'whiteBloodCellCount.html';
+            }
+        }
+    </script>
 </body>
 </html>
